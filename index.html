@@ -1,1034 +1,305 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Boost</title>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="https://i.supaimg.com/635920c5-7142-4adc-a037-c3463c6968b5.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KAPIL 1992 STORE</title>
     <style>
-        * {
+        :root {
+            --primary: #ff4757;
+            --dark: #2f3542;
+            --bg: #f1f2f6;
+        }
+
+        /* PC par bhi phone jaisa dikhne ke liye main container */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #0f0c29, #e73c7e, #302b63, #000););
-            background-size: 100% 100%;
-            animation: gradient 5s ease infinite;
-            min-height: 100vh;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px;
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            display: block;
-            list-style: none;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            animation: animate 25s linear infinite;
-            bottom: -150px;
-            border-radius: 50%;
-        }
-
-        .particle:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
-        .particle:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-        .particle:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-        .particle:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
-        .particle:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
-        .particle:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
-        .particle:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
-        .particle:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
-
-        @keyframes animate {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
-        }
-
-        /* Profile Section - NEW */
-        .profile-section {
+            background: #2f3542; /* PC background */
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-        .profile-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 25px 40px;
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            transition: all 0.4s ease;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 0px solid rgba(255,255,255,0.3);
-            object-fit: cover;
-            box-shadow: 0 0 40px rgba(255,215,0,0.4);
-        }
-
-        .profile-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .profile-info p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .youtube-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .youtube-btn:hover {
-            transform: scale(1.0);
-            box-shadow: 0 10px 30px rgba(255,0,0,0.4);
+        .mobile-container {
+            width: 100%;
+            max-width: 450px; /* PC par width fix kar di gayi hai */
+            height: 100vh;
+            background: var(--bg);
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         /* Header */
-        .header {
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
             text-align: center;
-            padding: 40px 20px 50px;
-            position: relative;
-        }
-
-        .logo-container {
-            display: inline-block;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #fff, #ffd700, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            animation: shine 3s ease-in-out infinite;
-            text-shadow: 0 0 60px rgba(255,215,0,0.5);
-        }
-
-        @keyframes shine {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
-        }
-
-        .tagline {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .sub-tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        /* Contact Buttons */
-        .contact-hero {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin: 40px 0;
-        }
-
-        .contact-btn {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            border: 3px solid transparent;
-        }
-
-        .contact-btn::before {
-            content: '';
-            position: absolute;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            position: sticky;
             top: 0;
-            left: -100%;
+            z-index: 10;
+        }
+
+        .page { display: none; padding: 15px; padding-bottom: 100px; }
+        .active { display: block; }
+
+        /* Home Page - Menu Items */
+        .search-bar {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.6s;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .contact-btn:hover::before {
-            left: 100%;
+        .food-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
-        .contact-btn.telegram {
-            background: linear-gradient(45deg, #0088cc, #00aced);
-            box-shadow: 0 10px 30px rgba(0,136,204,0.5);
-            border-color: rgba(255,255,255,0.3);
+        .food-card {
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .contact-btn.whatsapp {
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            box-shadow: 0 10px 30px rgba(37,211,102,0.5);
-            border-color: rgba(255,255,255,0.3);
+        .food-card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
-        .contact-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        /* Calculator UI - Vertical Phone Style */
+        .calc-box {
+            background: #000;
+            border-radius: 20px;
+            padding: 15px;
+            margin-top: 10px;
         }
 
-        .contact-btn i {
-            font-size: 1.8rem;
+        .calc-display {
+            color: white;
+            font-size: 35px;
+            text-align: right;
+            padding: 20px;
+            height: 50px;
+            overflow: hidden;
         }
 
-        .contact-btn .label {
+        .calc-btns {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .c-btn {
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .c-num { background: #333; color: white; }
+        .c-op { background: #f39c12; color: white; }
+        .c-ac { background: #a5a5a5; }
+
+        /* Upload Form */
+        .input-box {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .btn-upload {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Bottom Nav - Fixed at bottom of container */
+        .nav {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70px;
+            background: white;
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-item {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .contact-btn .small {
-            font-size: 0.75rem;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contact-btn .big {
-            font-size: 1.8rem;
-        }
-
-        /* Services Section */
-        .services-section {
-            margin: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 30px;
-        }
-
-        /* Service Cards */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .service-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 50px 40px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-            border-color: rgba(255,215,0,0.5);
-        }
-
-        .service-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 30px;
-            background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-            border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            border: 3px solid rgba(255,255,255,0.3);
-            transition: all 0.3s;
-        }
-
-        .service-card:hover .service-icon {
-            transform: rotateY(360deg);
-            border-color: #ffd700;
-            box-shadow: 0 0 40px rgba(255,215,0,0.4);
-        }
-
-        .service-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .service-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .service-features {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .service-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .service-features li i {
-            color: #ffd700;
-            font-size: 1.1rem;
-        }
-
-        .price-tag {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 20px 0;
-        }
-
-        .price-tag span {
-            font-size: 1rem;
-            opacity: 0.7;
-        }
-
-        .order-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-            border: none;
-            border-radius: 15px;
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 12px;
+            color: #777;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .order-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.2);
-            transform: rotate(45deg) translateY(-100%);
-            transition: transform 0.6s;
-        }
+        .nav-item.active-nav { color: var(--primary); font-weight: bold; }
 
-        .order-btn:hover::after {
-            transform: rotate(45deg) translateY(0);
-        }
-
-        .order-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.5);
-        }
-
-        /* Application Form */
-        .form-container {
-            background: rgba(0,0,0,0.4);
-            border-radius: 40px;
-            padding: 60px;
-            margin: 80px 0;
-            backdrop-filter: blur(30px);
-            border: 2px solid rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .form-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 20px;
-            border: 2px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            color: #fff;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255,215,0,0.3);
-            transform: translateY(-3px);
-        }
-
-        .form-group i {
-            position: absolute;
-            right: 20px;
-            top: 55px;
-            color: #ffd700;
-            font-size: 1.2rem;
-        }
-
-        .submit-btn {
-            grid-column: 1 / -1;
-            padding: 25px;
-            background: linear-gradient(45deg, #11998e, #38ef7d);
-            border: none;
-            border-radius: 15px;
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            box-shadow: 0 10px 30px rgba(56, 239, 125, 0.3);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(56, 239, 125, 0.5);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Why Choose Us */
-        .features-section {
-            margin: 100px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .feature-box {
-            text-align: center;
-            padding: 40px 30px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.4s ease;
-        }
-
-        .feature-box:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,215,0,0.3);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            border: 2px solid rgba(255,215,0,0.3);
-        }
-
-        .feature-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .feature-box p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 80px 20px;
-            margin-top: 50px;
-            border-top: 2px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-
-        .footer-title {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .copyright {
-            opacity: 0.7;
-            font-size: 1rem;
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(255,255,255,0.95);
-            color: #333;
-            padding: 25px 35px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            transform: translateX(600px);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            max-width: 400px;
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast.success { 
-            border-left: 6px solid #4caf50; 
-            background: linear-gradient(135deg, #fff, #e8f5e9);
-        }
-        .toast.error { 
-            border-left: 6px solid #f44336; 
-            background: linear-gradient(135deg, #fff, #ffebee);
-        }
-
-        .toast i {
-            font-size: 1.8rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .profile-card { flex-direction: column; text-align: center; padding: 20px; }
-            .profile-img { width: 60px; height: 60px; }
-            .logo { font-size: 3rem; }
-            .tagline { font-size: 1.5rem; }
-            .form-container { padding: 40px 25px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .contact-btn { padding: 15px 25px; }
-        }
     </style>
 </head>
 <body>
-    <!-- Particles -->
-    <ul class="particles">
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-        <li class="particle"></li>
-    </ul>
 
-    <div class="container">
-        <!-- Profile Section - NEW -->
-        <div class="profile-section">
-            <div class="profile-card">
-                <img src="https://i.supaimg.com/635920c5-7142-4adc-a037-c3463c6968b5.jpg" alt="Profile" class="profile-img">
-                <div class="profile-info">
-                    <h3>Mega boost ofl</h3>
-                    <p>@kapil_h4x_live</p>
-                    <a href="https://www.youtube.com/@kapil_h4x_live" target="_blank" class="youtube-btn">
-                        <i class="fab fa-youtube"></i> Subscribe on YouTube
-                    </a>
-                </div>
+<div class="mobile-container">
+    <header>
+        <h2 style="margin:0;">KAPIL 1992 STORE</h2>
+        <small>OFFLINE FOOD SHOP</small>
+    </header>
+
+    <div id="homePage" class="page active">
+        <input type="text" id="search" class="search-bar" placeholder="Search food..." onkeyup="showFood()">
+        <div id="foodGrid" class="food-list"></div>
+    </div>
+
+    <div id="uploadPage" class="page">
+        <div style="background:white; padding:15px; border-radius:15px;">
+            <h3>Upload Food</h3>
+            <input type="hidden" id="editIdx">
+            <input type="text" id="name" class="input-box" placeholder="Food Name">
+            <input type="number" id="price" class="input-box" placeholder="Price ₹">
+            <input type="file" id="image" class="input-box" accept="image/*">
+            <button class="btn-upload" onclick="save()">Save To Store</button>
+        </div>
+    </div>
+
+    <div id="calcPage" class="page">
+        <div class="calc-box">
+            <div id="res" class="calc-display">0</div>
+            <div class="calc-btns">
+                <button class="c-btn c-ac" onclick="clr()">AC</button>
+                <button class="c-btn c-ac" onclick="back()">DEL</button>
+                <button class="c-btn c-op" onclick="val('/')">÷</button>
+                <button class="c-btn c-op" onclick="val('*')">×</button>
+                
+                <button class="c-btn c-num" onclick="val('7')">7</button>
+                <button class="c-btn c-num" onclick="val('8')">8</button>
+                <button class="c-btn c-num" onclick="val('9')">9</button>
+                <button class="c-btn c-op" onclick="val('-')">-</button>
+                
+                <button class="c-btn c-num" onclick="val('4')">4</button>
+                <button class="c-btn c-num" onclick="val('5')">5</button>
+                <button class="c-btn c-num" onclick="val('6')">6</button>
+                <button class="c-btn c-op" onclick="val('+')">+</button>
+                
+                <button class="c-btn c-num" onclick="val('1')">1</button>
+                <button class="c-btn c-num" onclick="val('2')">2</button>
+                <button class="c-btn c-num" onclick="val('3')">3</button>
+                <button class="c-btn c-op" style="background:#2ecc71" onclick="eq()">=</button>
+                
+                <button class="c-btn c-num" style="grid-column: span 2; border-radius:30px;" onclick="val('0')">0</button>
+                <button class="c-btn c-num" onclick="val('.')">.</button>
             </div>
         </div>
-
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-container">
-                <div class="logo"><i class="fas fa-rocket"></i> MEGA BOOST</div>
-            </div>
-            <h1 class="tagline">Boost Your Digital Empire</h1>
-            <p class="sub-tagline">
-                Professional promotion services for Websites, Play Store Apps, YouTube Channels, and Telegram Channels. 
-                Get noticed, get traffic, get results!
-            </p>
-            
-            <div class="contact-hero">
-                <a href="https://t.me/mega_boost" target="_blank" class="contact-btn telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                    <div class="label">
-                        <span class="small">Contact on Telegram</span>
-                        <span class="big">@mega_boost</span>
-                    </div>
-                </a>
-                <a href="https://wa.me/918134958144" target="_blank" class="contact-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <div class="label">
-                        <span class="small">Chat on WhatsApp</span>
-                        <span class="big">+91 8134958144</span>
-                    </div>
-                </a>
-            </div>
-        </header>
-
-        <!-- Services -->
-        <section class="services-section">
-            <div class="section-header">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">Choose the perfect promotion package for your digital asset</p>
-            </div>
-
-            <div class="services-grid">
-                <!-- Website Promotion -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="service-name">Website Promotion</h3>
-                    <p class="service-desc">Drive real traffic to your website. Boost SEO rankings and increase visibility.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Real Human Traffic</li>
-                        <li><i class="fas fa-check-circle"></i> SEO Boost</li>
-                        <li><i class="fas fa-check-circle"></i> Global Audience</li>
-                        <li><i class="fas fa-check-circle"></i> Analytics Report</li>
-                    </ul>
-                    <div class="price-tag">₹799<span>/campaign</span></div>
-                    <button class="order-btn" onclick="selectService('Website Promotion', 799)">
-                        <i class="fas fa-shopping-cart"></i> Order Now
-                    </button>
-                </div>
-
-                <!-- Play Store App -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-google-play"></i>
-                    </div>
-                    <h3 class="service-name">Play Store App</h3>
-                    <p class="service-desc">Get more downloads, ratings and reviews for your Android application.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Real Downloads</li>
-                        <li><i class="fas fa-check-circle"></i> 5-Star Ratings</li>
-                        <li><i class="fas fa-check-circle"></i> Positive Reviews</li>
-                        <li><i class="fas fa-check-circle"></i> Ranking Boost</li>
-                    </ul>
-                    <div class="price-tag">₹999<span>/campaign</span></div>
-                    <button class="order-btn" onclick="selectService('Play Store App Promotion', 999)">
-                        <i class="fas fa-shopping-cart"></i> promotion now
-                    </button>
-                </div>
-
-                <!-- YouTube Channel - NEW -->
-                <div class="service-card">
-                    <div class="service-icon" style="color: #ff0000;">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3 class="service-name" style="color: #ff0000;">YouTube Channel</h3>
-                    <p class="service-desc">Grow your YouTube channel with real subscribers, views and engagement.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle" style="color: #ff0000;"></i> Real Subscribers</li>
-                        <li><i class="fas fa-check-circle" style="color: #ff0000;"></i> Video Views</li>
-                        <li><i class="fas fa-check-circle" style="color: #ff0000;"></i> Watch Time</li>
-                        <li><i class="fas fa-check-circle" style="color: #ff0000;"></i> Channel Growth</li>
-                    </ul>
-                    <div class="price-tag" style="background: linear-gradient(45deg, #ff0000, #cc0000); -webkit-background-clip: text;">₹899<span>/campaign</span></div>
-                    <button class="order-btn" onclick="selectService('YouTube Channel Promotion', 899)" style="background: linear-gradient(45deg, #ff0000, #cc0000);">
-                        <i class="fas fa-shopping-cart"></i> Order Now
-                    </button>
-                </div>
-
-                <!-- Telegram Channel -->
-                <div class="service-card">
-                    <div class="service-icon" style="color: #0088cc;">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3 class="service-name" style="color: #0088cc;">Telegram Channel</h3>
-                    <p class="service-desc">Grow your Telegram channel with real, active subscribers and engagement.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle" style="color: #0088cc;"></i> Real Subscribers</li>
-                        <li><i class="fas fa-check-circle" style="color: #0088cc;"></i> Active Users</li>
-                        <li><i class="fas fa-check-circle" style="color: #0088cc;"></i> Post Views</li>
-                        <li><i class="fas fa-check-circle" style="color: #0088cc;"></i> 24/7 Support</li>
-                    </ul>
-                    <div class="price-tag" style="background: linear-gradient(45deg, #0088cc, #00aced); -webkit-background-clip: text;">₹599<span>/campaign</span></div>
-                    <button class="order-btn" onclick="selectService('Telegram Channel Promotion', 599)" style="background: linear-gradient(45deg, #0088cc, #00aced);">
-                        <i class="fas fa-shopping-cart"></i> Order Now
-                    </button>
-                </div>
-
-                <!-- Combo Package -->
-                <div class="service-card" style="border: 3px solid #ffd700; box-shadow: 0 0 40px rgba(255,215,0,0.2); grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
-                    <div class="service-icon" style="background: linear-gradient(45deg, rgba(255,215,0,0.3), rgba(255,215,0,0.1)); border-color: #ffd700;">
-                        <i class="fas fa-crown" style="color: #ffd700;"></i>
-                    </div>
-                    <h3 class="service-name" style="color: #ffd700;">Mega Combo Pack</h3>
-                    <p class="service-desc">All-in-one promotion package. Website + App + YouTube + Telegram together!</p>
-                    <ul class="service-features" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; max-width: 400px; margin: 0 auto 30px;">
-                        <li><i class="fas fa-check-circle" style="color: #ffd700;"></i> Website Traffic</li>
-                        <li><i class="fas fa-check-circle" style="color: #ffd700;"></i> App Downloads</li>
-                        <li><i class="fas fa-check-circle" style="color: #ffd700;"></i> YouTube Growth</li>
-                        <li><i class="fas fa-check-circle" style="color: #ffd700;"></i> Telegram Subs</li>
-                    </ul>
-                    <div class="price-tag" style="font-size: 3rem;">₹2499<span>/campaign</span></div>
-                    <button class="order-btn" onclick="selectService('Mega Combo Pack', 2499)" style="background: linear-gradient(45deg, #ffd700, #ffed4e); color: #333;">
-                        <i class="fas fa-crown"></i> Get Combo
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Application Form -->
-        <section class="form-container">
-            <div class="form-content">
-                <h2 class="form-title"><i class="fas fa-paper-plane"></i> Submit</h1>
-                <form id="promotionForm" class="form-grid">
-                    <div class="form-group">
-                        <label><i class="fas fa-user"></i> Your Name *</label>
-                        <input type="text" id="userName" placeholder="Enter your full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-phone"></i> WhatsApp Number *</label>
-                        <input type="tel" id="userPhone" placeholder="+91 8134958144" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-bullhorn"></i> Select Service *</label>
-                        <select id="userService" required>
-                            <option value="">Choose a service...</option>
-                            <option value="Website Promotion - ₹799">Website Promotion - ₹799</option>
-                            <option value="Play Store App - ₹999">Play Store App Promotion - ₹999</option>
-                            <option value="YouTube Channel - ₹899">YouTube Channel Promotion - ₹899</option>
-                            <option value="Telegram Channel - ₹599">Telegram Channel - ₹599</option>
-                            <option value="Mega Combo Pack - ₹2499">Mega Combo Pack - ₹2499</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-link"></i> Link to Promote *</label>
-                        <input type="url" id="userLink" placeholder="https://..." required>
-                        <i class="fas fa-external-link-alt"></i>
-                    </div>
-
-                    <div class="form-group" style="grid-column: 1 / -1;">
-                        <label><i class="fas fa-info-circle"></i> Additional Details</label>
-                        <textarea id="userDetails" rows="1" placeholder="Hi bro Message ?"></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <i class="fas fa-rocket"></i>Apply
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="features-section">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose Mega Boost?</h1>
-            </div>
-            <div class="features-grid">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt" style="color: #ffd700;"></i>
-                    </div>
-                    <h3>Lightning Fast</h3>
-                    <p>See results within 24 hours of your order confirmation</p>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt" style="color: #4caf50;"></i>
-                    </div>
-                    <h3>100% Safe</h3>
-                    <p>Organic methods that comply with all platform policies</p>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-users" style="color: #2196f3;"></i>
-                    </div>
-                    <h3>Real Audience</h3>
-                    <p>Genuine users, no bots or fake engagements ever</p>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset" style="color: #9c27b0;"></i>
-                    </div>
-                    <h3>24/7 Support</h3>
-                    <p>Always available on Telegram & WhatsApp for you</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <h2 class="footer-title">Ready to Grow?</h2>
-            <div class="footer-contact">
-                <a href="https://t.me/mega_boost" target="_blank" class="contact-btn telegram">
-                    <i class="fab fa-telegram"></i> @mega_boost
-                </a>
-                <a href="https://wa.me/918134958144" target="_blank" class="contact-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i> 8134958144
-                </a>
-            </div>
-            <p class="copyright">
-                <i class="fas fa-rocket"></i> Mega Boost © 2024 | Promote Your Digital Empire
-            </p>
-        </footer>
     </div>
 
-    <!-- Toast -->
-    <div id="toast" class="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMsg">Success!</span>
+    <div class="nav">
+        <div class="nav-item active-nav" onclick="tab('homePage', this)"><span>🏠</span>Home</div>
+        <div class="nav-item" onclick="tab('uploadPage', this)"><span>➕</span>Upload</div>
+        <div class="nav-item" onclick="tab('calcPage', this)"><span>🔢</span>Calculator</div>
     </div>
+</div>
 
-    <script>
-        // Firebase Config
-        const firebaseConfig = {
-            apiKey: "AIzaSyCY6B4hsteNbRkNKYS6f9M1ob9030AvF4k",
-            authDomain: "mega-boost-official-website.firebaseapp.com",
-            databaseURL: "https://mega-boost-official-website-default-rtdb.firebaseio.com",
-            projectId: "mega-boost-official-website",
-            storageBucket: "mega-boost-official-website.firebasestorage.app",
-            messagingSenderId: "220450956022",
-            appId: "1:220450956022:web:c0d9cdc97ecefa1f2d02d7",
-            measurementId: "G-LN9QJ0Y938"
-        };
+<script>
+    let store = JSON.parse(localStorage.getItem('kapilStore')) || [];
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+    function tab(id, el) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active-nav'));
+        document.getElementById(id).classList.add('active');
+        el.classList.add('active-nav');
+        if(id === 'homePage') showFood();
+    }
 
-        // Select Service
-        function selectService(name, price) {
-            document.getElementById('userService').value = `${name} - ₹${price}`;
-            document.querySelector('.form-container').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
-            showToast(`${name} selected! Complete the form below.`, 'success');
+    function save() {
+        const n = document.getElementById('name').value;
+        const p = document.getElementById('price').value;
+        const i = document.getElementById('image').files[0];
+        const idx = document.getElementById('editIdx').value;
+
+        if(!n || !p) return alert("Fill details");
+
+        if(i) {
+            const r = new FileReader();
+            r.onload = (e) => finishSave(n, p, e.target.result, idx);
+            r.readAsDataURL(i);
+        } else {
+            const old = idx !== "" ? store[idx].img : 'https://via.placeholder.com/100';
+            finishSave(n, p, old, idx);
         }
+    }
 
-        // Submit Form
-        document.getElementById('promotionForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    function finishSave(n, p, img, idx) {
+        const item = {n, p, img};
+        if(idx === "") store.push(item);
+        else { store[idx] = item; document.getElementById('editIdx').value = ""; }
+        
+        localStorage.setItem('kapilStore', JSON.stringify(store));
+        alert("Success!");
+        location.reload();
+    }
 
-            const data = {
-                name: document.getElementById('userName').value,
-                phone: document.getElementById('userPhone').value,
-                service: document.getElementById('userService').value,
-                link: document.getElementById('userLink').value,
-                details: document.getElementById('userDetails').value || 'No additional details',
-                status: 'pending',
-                timestamp: Date.now(),
-                date: new Date().toLocaleString(),
-                orderDate: new Date().toISOString().split('T')[0]
-            };
-
-            try {
-                await database.ref('applications').push(data);
-                showToast('🎉 Order submitted successfully! We will contact you soon on WhatsApp.', 'success');
-                document.getElementById('promotionForm').reset();
-            } catch (error) {
-                showToast('❌ Error: ' + error.message, 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Launch Promotion';
+    function showFood() {
+        const grid = document.getElementById('foodGrid');
+        const q = document.getElementById('search').value.toLowerCase();
+        grid.innerHTML = "";
+        store.forEach((it, i) => {
+            if(it.n.toLowerCase().includes(q)) {
+                grid.innerHTML += `
+                <div class="food-card">
+                    <img src="${it.img}">
+                    <h4>${it.n}</h4>
+                    <div style="color:green; font-weight:bold">₹${it.p}</div>
+                    <button onclick="edit(${i})" style="border:none; background:#f1c40f; padding:5px; border-radius:5px; margin-top:5px; width:45%">Edit</button>
+                    <button onclick="del(${i})" style="border:none; background:#e74c3c; color:white; padding:5px; border-radius:5px; margin-top:5px; width:45%">Del</button>
+                </div>`;
             }
         });
+    }
 
-        // Show Toast
-        function showToast(message, type) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').textContent = message;
-            
-            const icon = toast.querySelector('i');
-            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-            
-            toast.className = `toast ${type} show`;
-            setTimeout(() => toast.classList.remove('show'), 5000);
-        }
+    function del(i) {
+        if(confirm("Delete?")) { store.splice(i,1); localStorage.setItem('kapilStore', JSON.stringify(store)); showFood(); }
+    }
 
-        // Init
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                showToast('🚀 Welcome to Mega Boost! Select a service to get started.', 'success');
-            }, 1000);
-        });
-    </script>
+    function edit(i) {
+        const it = store[i];
+        document.getElementById('name').value = it.n;
+        document.getElementById('price').value = it.p;
+        document.getElementById('editIdx').value = i;
+        tab('uploadPage', document.querySelectorAll('.nav-item')[1]);
+    }
+
+    // Calc Logic
+    let txt = "0";
+    function val(v) { if(txt==="0")txt=""; txt+=v; document.getElementById('res').innerText = txt; }
+    function clr() { txt="0"; document.getElementById('res').innerText = txt; }
+    function back() { txt = txt.slice(0,-1) || "0"; document.getElementById('res').innerText = txt; }
+    function eq() { try { txt=eval(txt).toString(); document.getElementById('res').innerText = txt; } catch { alert("Error"); txt="0"; } }
+
+    showFood();
+</script>
 </body>
 </html>
